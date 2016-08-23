@@ -37,7 +37,6 @@ public class DuplicateCharacter {
 				}
 				catch(NoSuchElementException e)
 				{
-					
 					e.printStackTrace();
 					System.out.println("Empty File");
 				}
@@ -49,21 +48,23 @@ public class DuplicateCharacter {
 	}
 	
 	static void duplicateChar(String sourceStr){
-		Set <Character> s = new HashSet<Character>();
+		String dupCharacters[];
+		int dupCount;
+		int count=1;char ch;
+		int numberOfDupCharacters=0;
 		for(int i=0;i<sourceStr.length();i++){
+			ch=sourceStr.charAt(i);
+			if(ch==' ')break;
 			for(int j=i+1;j<sourceStr.length();j++) {
-				if(sourceStr.charAt(i)==sourceStr.charAt(j))  s.add(sourceStr.charAt(i));
+				if(sourceStr.charAt(j)==sourceStr.charAt(i))
+					count++;
 			}
+			if(count>1) {
+				System.out.println("Character: "+sourceStr.charAt(i) +  " Count: "+count);
+				numberOfDupCharacters++;
+				count=1;
 		}	
-		if(s.size()==0){
-			System.out.println("No duplicate elements in the string");
-			return ;
-		}
-		System.out.println("Duplicate Characters are as follows:"); 
-		Iterator iterator = s.iterator(); 
-		while (iterator.hasNext()){
-			System.out.println("Character: "+iterator.next() + " ");  
-		}
-		       
+	}
+		       System.out.println("Total number of duplicate chatracters"+ numberOfDupCharacters);
 	}
 }
